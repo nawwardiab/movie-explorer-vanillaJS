@@ -35,14 +35,20 @@ themeToggleBtn.addEventListener("click", () => {
   }
 });
 
-const navToggle = document.querySelector("#nav-toggle");
-const navMenu = document.querySelector("#nav-menu");
-
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("open");
-});
-
 document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector("#nav-toggle");
+  const navMenu = document.querySelector("#nav-menu");
+
+  if (navToggle && navMenu) {
+    console.log("Elements found"); // Check if elements are correctly selected
+    navToggle.addEventListener("click", () => {
+      console.log("Toggle clicked", navMenu.classList); // Check if the click event fires
+      navMenu.classList.toggle("open");
+    });
+  } else {
+    console.error("navToggle or navMenu not found");
+  }
+
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light-theme");

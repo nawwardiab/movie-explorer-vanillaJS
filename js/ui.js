@@ -348,7 +348,7 @@ export function displayTrendingMovies(movies) {
 
   // updateCarousel();
 
-  document.querySelector("#prev-btn").addEventListener("click", () => {
+  document.querySelector("#trending-prev-btn").addEventListener("click", () => {
     currentIndex = Math.max(0, currentIndex - 1);
     trendingContainer.scrollBy({
       left: -scrollAmount,
@@ -357,7 +357,7 @@ export function displayTrendingMovies(movies) {
     // updateCarousel();
   });
 
-  document.querySelector("#next-btn").addEventListener("click", () => {
+  document.querySelector("#trending-next-btn").addEventListener("click", () => {
     currentIndex = Math.min(items.length - 1, currentIndex + 1);
     trendingContainer.scrollBy({
       left: scrollAmount,
