@@ -31,19 +31,28 @@
     <nav class="navbar">
       <div class="container">
         <h1>My Movie Explorer</h1>
-        <button id="theme-toggle" class="theme-toggle">Change Theme</button>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search My Movie Explorer..."
+          />
+          <button id="search-button">Search</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+        <div id="nav-toggle" class="nav-toggle">
+          <i class="fa fa-bars"></i>
+        </div>
+        <ul id="nav-menu" class="nav-links">
+          <li><a href="#trending-container">Trending</a></li>
+          <li><a href="#upcoming-container">Upcoming</a></li>
+          <li><a href="#top-rated-container">Top Rated</a></li>
+          <li><a href="#favorites-container">Favorites</a></li>
+        </ul>
       </div>
     </nav>
-
-    <!-- Create the Search Bar -->
-    <div class="search-container">
-      <input
-        type="text"
-        id="search-input"
-        placeholder="Search My Movie Explorer..."
-      />
-      <button id="search-button">Search</button>
-    </div>
 
     <!-- Container to display movie results -->
     <ul id="movies-container"></ul>

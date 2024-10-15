@@ -24,7 +24,7 @@ body.light-theme .movie-card {
 }
 
 body.light-theme button {
-  background-color: #007bff;
+  /* background-color: #007bff; */
   color: #ffffff;
 }
 
@@ -36,12 +36,65 @@ body.light-theme button {
   justify-content: space-between;
   align-items: center;
   color: #e0e0e0;
+  max-width: 100vw;
 }
 .navbar .container {
+  flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  padding: 10px;
+}
+
+.nav-links a {
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: #1e1e1e;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
 }
 
 .navbar h1 {
@@ -49,13 +102,19 @@ body.light-theme button {
 }
 
 .theme-toggle {
-  background-color: #007bff;
+  background-color: transparent;
   color: #fff;
   border: none;
+  font-size: 1.5rem;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  /* color: #007bff; */
+  transform: scale(1.2);
 }
 
 /* Section Headings */
@@ -91,6 +150,7 @@ h2 {
 .search-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin: 20px 0;
   /* border-bottom: 2px solid;#ddd; */
@@ -187,7 +247,7 @@ button:hover {
 
 /* Favorite Button */
 .favorite-btn {
-  background: none;
+  background: transparent;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -465,9 +525,14 @@ button:hover {
 .carousel-inner {
   display: flex; /* Arrange items in a row */
   transition: transform 0.5s ease-in-out;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar */
   scroll-behavior: smooth; /* Smooth scrolling */
   padding: 20px 0;
+}
+
+.carousel-inner::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
 .carousel-item {

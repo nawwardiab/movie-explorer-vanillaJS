@@ -31,7 +31,6 @@ export function displayMovies(movies) {
       <p>Rating: ${movie.vote_average}</p>
 
       <h3>${movie.title}</h3>  
-      <p> Release Date: ${movie.release_date}</p>
       <span id='favorite-btn' class='remove-favorite'><i class="fa-solid fa-heart"></i></span>
 
     `;
@@ -220,7 +219,8 @@ export function displayFavorites() {
         alt="${movie.title}"
       />
       <h3>${movie.title}</h3>
-      <p>Release Date: ${movie.release_date}</p>
+      <p>Rating: ${movie.vote_average}</p>
+
       <span id='favorite-btn' class="remove-favorite"><i class="fa-solid fa-heart"></i></span>
     `;
     const favoriteBtn = favoriteCard.querySelector("#favorite-btn");
@@ -294,7 +294,6 @@ export function displayTrendingMovies(movies) {
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <p>Rating: ${movie.vote_average}</p>
-      <p>Release Date: ${movie.release_date}</p>
       <span id='favorite-btn' class='remove-favorite'><i class="fa-solid fa-heart"></i></span>
     `;
 
@@ -381,8 +380,31 @@ export function displayUpcomingMovies(movies) {
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <p>Rating: ${movie.vote_average}</p>
-      <p>Release Date: ${movie.release_date}</p>
+      <span id='favorite-btn' class='remove-favorite'><i class="fa-solid fa-heart"></i></span>
     `;
+
+    const favoriteBtn = movieCard.querySelector("#favorite-btn");
+
+    if (isFavorite(movie.id)) {
+      favoriteBtn.classList.add("favorited");
+      favoriteBtn.style.color = "red";
+    }
+
+    // add event listener to the favorite button
+    favoriteBtn.addEventListener("click", (event) => {
+      event.stopPropagation(); // Prevent click event from bubbling up to the movie card
+
+      if (isFavorite(movie.id)) {
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
+        favoriteBtn.style.color = "none";
+      } else {
+        saveFavorite(movie); // Save the movie to favorites
+        favoriteBtn.classList.add("favorited"); // Add the favorited class
+        favoriteBtn.style.color = "red";
+      }
+      displayFavorites(); // Display the updated favorites
+    });
 
     // Add Event Listener for click to open the movie details Modal
     movieCard.addEventListener("click", async () => {
@@ -411,8 +433,32 @@ export function displayTopRatedMovies(movies) {
       <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
       <h3>${movie.title}</h3>
       <p>Rating: ${movie.vote_average}</p>
-      <p>Release Date: ${movie.release_date}</p>
+      <span id='favorite-btn' class='remove-favorite'><i class="fa-solid fa-heart"></i></span>
+
     `;
+
+    const favoriteBtn = movieCard.querySelector("#favorite-btn");
+
+    if (isFavorite(movie.id)) {
+      favoriteBtn.classList.add("favorited");
+      favoriteBtn.style.color = "red";
+    }
+
+    // add event listener to the favorite button
+    favoriteBtn.addEventListener("click", (event) => {
+      event.stopPropagation(); // Prevent click event from bubbling up to the movie card
+
+      if (isFavorite(movie.id)) {
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
+        favoriteBtn.style.color = "none";
+      } else {
+        saveFavorite(movie); // Save the movie to favorites
+        favoriteBtn.classList.add("favorited"); // Add the favorited class
+        favoriteBtn.style.color = "red";
+      }
+      displayFavorites(); // Display the updated favorites
+    });
 
     // Add Event Listener for click to open the movie details Modal
     movieCard.addEventListener("click", async () => {

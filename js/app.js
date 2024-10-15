@@ -19,20 +19,39 @@ import {
 
 // theme toggle
 const themeToggleBtn = document.querySelector("#theme-toggle");
+const themeIcon = document.querySelector("#theme-icon");
 
 themeToggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("light-theme");
+  // themeIcon.classList.remove("fa-moon");
   if (document.body.classList.contains("light-theme")) {
     localStorage.setItem("theme", "light");
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
   } else {
     localStorage.setItem("theme", "dark");
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
   }
+});
+
+const navToggle = document.querySelector("#nav-toggle");
+const navMenu = document.querySelector("#nav-menu");
+
+navToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("open");
 });
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     document.body.classList.add("light-theme");
+    themeIcon.classList.remove("fa-sun");
+    themeIcon.classList.add("fa-moon");
+  } else {
+    document.body.classList.remove("light-theme");
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
   }
   displayFavorites(); // Display favorite movies when the page loads
 
