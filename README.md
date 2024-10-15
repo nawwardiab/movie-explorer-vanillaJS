@@ -45,15 +45,10 @@ A live demo of the Movie Explorer app can be found [here](#).
 ![Movie Details](#)
 
 ## Future Enhancements
-- **Recommendations**: Add similar movie recommendations in the movie details modal.
 - **User Accounts**: Enable login to store favorite movies across different devices.
 - **Improved Search**: Implement fuzzy search and additional filters for a more refined experience.
 
-## Contributing
-Contributions are welcome! If you would like to contribute to this project, please fork the repository and submit a pull request. Feel free to open issues for suggestions and feature requests.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## Acknowledgements
 - **The Movie Database (TMDB)** for providing movie data via their API.
@@ -62,7 +57,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact
 For any questions or feedback, feel free to reach out:
 - **GitHub**: [nawwardiab](https://github.com/nawwardiab)
-- **Email**: [youremail@example.com](mailto:youremail@example.com)
 
 Happy movie exploring!
 
