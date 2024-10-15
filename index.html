@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/275935285a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>My Movie Explorer</title>
+
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="container">
+        <h1>My Movie Explorer</h1>
+        <button id="theme-toggle" class="theme-toggle">Change Theme</button>
+      </div>
+    </nav>
+
+    <!-- Create the Search Bar -->
+    <div class="search-container">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search My Movie Explorer..."
+      />
+      <button id="search-button">Search</button>
+    </div>
+
+    <!-- Container to display movie results -->
+    <ul id="movies-container"></ul>
+
+    <!-- Trending Movies Section -->
+    <div id="trending-container">
+      <h2>Trending Movies</h2>
+      <div class="carousel" id="carousel-container">
+        <button class="carousel-control-prev" id="prev-btn">❮</button>
+        <div id="trending-movies" class="carousel-inner"></div>
+        <button class="carousel-control-next" id="next-btn">❯</button>
+      </div>
+    </div>
+
+    <!-- Upcoming Movies Section -->
+    <div id="upcoming-container">
+      <h2>Upcoming Movies</h2>
+      <div class="carousel" id="upcoming-carousel">
+        <button class="carousel-control-prev" id="upcoming-prev-btn">❮</button>
+        <div id="upcoming-movies" class="carousel-inner"></div>
+        <button class="carousel-control-next" id="upcoming-next-btn">❯</button>
+      </div>
+    </div>
+
+    <!-- Top-Rated Movies Section -->
+    <div id="top-rated-container">
+      <h2>Top Rated Movies</h2>
+      <div class="carousel" id="top-rated-carousel">
+        <button class="carousel-control-prev" id="top-rated-prev-btn">❮</button>
+        <div id="top-rated-movies" class="carousel-inner"></div>
+        <button class="carousel-control-next" id="top-rated-next-btn">❯</button>
+      </div>
+    </div>
+
+    <!-- Create Favorites section -->
+
+    <div id="favorites-container">
+      <h2>Your Favorite Movies</h2>
+      <ul id="favorites-list"></ul>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Movie modal -->
+
+    <div id="movie-modal" class="modal">
+      <span id="close-modal"><i class="fa-solid fa-xmark"></i></span>
+      <!-- Movie details will be displayed here -->
+    </div>
+
+    <!-- Create a loading spinner -->
+
+    <div id="loading-spinner" class="spinner" style="display: none"></div>
+    <!-- Add loading spinners to each section -->
+    <div id="trending-spinner" class="spinner" style="display: none"></div>
+    <div id="upcoming-spinner" class="spinner" style="display: none"></div>
+    <div id="top-rated-spinner" class="spinner" style="display: none"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2024 Movie Explorer | Follow us on <a href="#">Twitter</a> and
+          <a href="#">Facebook</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Link to the main JavaScript logic -->
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
