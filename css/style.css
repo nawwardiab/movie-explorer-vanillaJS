@@ -354,31 +354,28 @@ button:hover {
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 25%;
-  opacity: 0;
-  overflow: auto;
-  transform: translateY(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #222;
-  padding: 30px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  width: 80%;
-  max-width: 800px;
-  max-height: 80%;
-  margin: 5% auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  overflow-y: auto;
   transition: opacity 0.3s ease, transform 0.3s ease;
   display: none; /* Hidden by default */
   color: #f3f3f3;
+  scrollbar-width: none; /* Hide scrollbar */
 }
 
 .modal h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  max-width: 100%;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
   color: #f3f3f3;
 }
 
@@ -386,7 +383,7 @@ button:hover {
 .modal.show {
   display: block;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-50%, -50%);
 }
 
 /* Modal overlay */
@@ -467,6 +464,41 @@ button:hover {
 
 .modal .trailer-link:hover {
   background-color: #0056b3;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .modal h2 {
+    font-size: 1.5rem;
+  }
+
+  #close-modal {
+    font-size: 1.2rem;
+    top: 8px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    width: 100%;
+    padding: 10px;
+    max-height: 80%;
+    overflow-y: scroll;
+  }
+
+  .modal h2 {
+    font-size: 1.2rem;
+  }
+
+  #close-modal {
+    font-size: 1rem;
+  }
 }
 
 /* Error message styling */
@@ -555,6 +587,12 @@ button:hover {
   width: 100%;
   height: 300px; /* Adjust height as needed */
   object-fit: cover;
+}
+
+.carousel-item p {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 10px 0;
 }
 
 .carousel-item:hover {
@@ -664,13 +702,15 @@ button:hover {
 /* Recommendations Section Styling */
 .recommendations {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   margin-top: 20px;
   overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar */
 }
 
 .recommendation-item {
   background-color: #fff;
+  color: #333;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -727,6 +767,22 @@ button:hover {
 
 .error-message button:hover {
   background-color: #0056b3;
+}
+
+#scrollTop {
+  position: fixed;
+  display: none;
+  bottom: 50px;
+  left: 20px;
+  background-color: #121212;
+  color: #bdbdbd;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 60px;
+  height: 50px;
+  width: 50px;
+  /* padding: 10px; */
+  cursor: pointer;
 }
 
 /* Footer Styles */

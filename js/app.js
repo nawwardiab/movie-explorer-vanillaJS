@@ -315,4 +315,14 @@ document.addEventListener("DOMContentLoaded", () => {
   retryTrendingMovies(); // Retry fetching trending movies if an error occurs
   retryUpcomingMovies(); // Retry fetching upcoming movies if an error occurs
   retryTopRatedMovies(); // Retry fetching top-rated movies if an error occurs
+  const scrollToTop = document.querySelector("#scrollTop"); // Button to scroll back to the top of the page
+  // Scroll to the top functionality
+  scrollToTop.addEventListener("click", () => {
+    document.body.scrollIntoView({ behavior: "smooth" }); // Smoothly scroll to the top of the page
+  });
+
+  // Toggle visibility of the scrollToTop button based on scroll position
+  document.addEventListener("scroll", () => {
+    scrollToTop.style.display = window.scrollY === 0 ? "none" : "block"; // Only show the button when the user has scrolled down
+  });
 });
