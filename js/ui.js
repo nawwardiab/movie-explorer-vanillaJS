@@ -20,37 +20,29 @@ export function displayMovies(movies) {
     movieCard.dataset.id = movie.id; // Set the movie ID as a data attribute
 
     // Check if the movie is a favorited
-    const isFavorited = isFavorite(movie.id);
 
     // Set the inner HTML for the movie card, including the poster, title, and release date
     movieCard.innerHTML = `
-      <img
-        src="https://image.tmdb.org/t/p/w500${movie.poster_path}"  
-        alt="${movie.title}" 
-      />
-      <p>Rating: ${movie.vote_average}</p>
+    <img
+    src="https://image.tmdb.org/t/p/w500${movie.poster_path}"  
+    alt="${movie.title}" 
+    />
+    <p>Rating: ${movie.vote_average}</p>
 
       <h3>${movie.title}</h3>  
       <span id='favorite-btn' class='remove-favorite'><i class="fa-solid fa-heart"></i></span>
-
-    `;
+      
+      `;
 
     const favoriteBtn = movieCard.querySelector("#favorite-btn");
 
+    if (isFavorite(movie.id)) {
+      favoriteBtn.style.color = "red";
+    }
     // Prevent the Modal from opening when clicking on the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-
-      if (isFavorite(movie.id)) {
-        removeFavorite(movie.id); // Remove the movie from favorites
-        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
-        favoriteBtn.style.color = "none";
-      } else {
-        saveFavorite(movie); // Save the movie to favorites
-        favoriteBtn.classList.add("favorited"); // Add the favorited class
-        favoriteBtn.style.color = "red";
-      }
-      displayFavorites(); // Display the updated favorites
+      toggleFavorite(movie, favoriteBtn);
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -139,18 +131,12 @@ export function displayMovieDetails(movie) {
     }
   });
 
+  if (isFavorite(movie.id)) {
+    favoriteBtn.style.color = "red";
+  }
   // Add Event Listener to the favorite button on Modal
   favoriteBtn.addEventListener("click", () => {
-    if (isFavorite(movie.id)) {
-      removeFavorite(movie.id); // Remove the movie from favorites
-      favoriteBtn.classList.remove("favorited"); // Remove the favorited class
-      favoriteBtn.style.color = "none"; // Set the color of the favorite button to none
-    } else {
-      saveFavorite(movie); // Save the movie to favorites
-      favoriteBtn.classList.add("favorited"); // Add the favorited class
-      favoriteBtn.style.color = "red"; // Set the color of the favorite button to red
-    }
-    displayFavorites(); // Display the updated favorites
+    toggleFavorite(movie, favoriteBtn);
   });
 }
 
@@ -171,21 +157,13 @@ export function displayTrendingMovies(movies) {
     `;
 
     const favoriteBtn = movieCard.querySelector("#favorite-btn");
-
+    if (isFavorite(movie.id)) {
+      favoriteBtn.style.color = "red";
+    }
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-
-      if (isFavorite(movie.id)) {
-        removeFavorite(movie.id); // Remove the movie from favorites
-        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
-        favoriteBtn.style.color = "none";
-      } else {
-        saveFavorite(movie); // Save the movie to favorites
-        favoriteBtn.classList.add("favorited"); // Add the favorited class
-        favoriteBtn.style.color = "red";
-      }
-      displayFavorites(); // Display the updated favorites
+      toggleFavorite(movie, favoriteBtn);
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -252,21 +230,13 @@ export function displayUpcomingMovies(movies) {
     `;
 
     const favoriteBtn = movieCard.querySelector("#favorite-btn");
-
+    if (isFavorite(movie.id)) {
+      favoriteBtn.style.color = "red";
+    }
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-
-      if (isFavorite(movie.id)) {
-        removeFavorite(movie.id); // Remove the movie from favorites
-        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
-        favoriteBtn.style.color = "none";
-      } else {
-        saveFavorite(movie); // Save the movie to favorites
-        favoriteBtn.classList.add("favorited"); // Add the favorited class
-        favoriteBtn.style.color = "red";
-      }
-      displayFavorites(); // Display the updated favorites
+      toggleFavorite(movie, favoriteBtn);
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -301,21 +271,13 @@ export function displayTopRatedMovies(movies) {
     `;
 
     const favoriteBtn = movieCard.querySelector("#favorite-btn");
-
+    if (isFavorite(movie.id)) {
+      favoriteBtn.style.color = "red";
+    }
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-
-      if (isFavorite(movie.id)) {
-        removeFavorite(movie.id); // Remove the movie from favorites
-        favoriteBtn.classList.remove("favorited"); // Remove the favorited class
-        favoriteBtn.style.color = "none";
-      } else {
-        saveFavorite(movie); // Save the movie to favorites
-        favoriteBtn.classList.add("favorited"); // Add the favorited class
-        favoriteBtn.style.color = "red";
-      }
-      displayFavorites(); // Display the updated favorites
+      toggleFavorite(movie, favoriteBtn);
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -441,4 +403,17 @@ export function hideLoadingSpinner(spinnerSelector) {
       spinner.removeChild(loadingMessage);
     }
   }
+}
+
+function toggleFavorite(movie, favoriteBtn) {
+  if (isFavorite(movie.id)) {
+    removeFavorite(movie.id);
+    favoriteBtn.classList.remove("favorited");
+    favoriteBtn.style.color = ""; // Remove color style
+  } else {
+    saveFavorite(movie);
+    favoriteBtn.classList.add("favorited");
+    favoriteBtn.style.color = "red"; // Set color to red
+  }
+  displayFavorites(); // Update favorites list display
 }

@@ -187,13 +187,12 @@ const handleSearch = () => {
 function toggleFavoriteStatus(movieId, favoriteBtn) {
   if (isFavorite(movieId)) {
     removeFavorite(movieId);
-    favoriteBtn.classList.remove("favorited");
-    favoriteBtn.style.color = "none";
   } else {
     saveFavorite({ id: movieId }); // Add the full movie object if needed
-    favoriteBtn.classList.add("favorited");
-    favoriteBtn.style.color = "red";
   }
+
+  // Update the appearance of favorite buttons across the app
+  updateFavoriteButtons(movieId);
 
   // Update favorite list in the favorites section
   displayFavorites();
