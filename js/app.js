@@ -26,8 +26,8 @@ function setupThemeToggle() {
     document.body.classList.toggle("light-theme");
     const isLight = document.body.classList.contains("light-theme");
     localStorage.setItem("theme", isLight ? "light" : "dark");
-    themeIcon.classList.toggle("fa-moon", !isLight);
-    themeIcon.classList.toggle("fa-sun", isLight);
+    themeIcon.classList.toggle("fa-sun", !isLight);
+    themeIcon.classList.toggle("fa-moon", isLight);
   });
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
