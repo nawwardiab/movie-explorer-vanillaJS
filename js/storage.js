@@ -15,6 +15,7 @@ export function removeFavorite(movieId) {
 
   // Filter out the movie to be removed
   favorites = favorites.filter((fav) => fav.id !== movieId);
+
   localStorage.setItem("favorites", JSON.stringify(favorites)); // Save the updated favorites list
 }
 

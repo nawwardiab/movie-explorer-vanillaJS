@@ -404,10 +404,6 @@ button:hover {
   transition: color 0.3s ease;
 }
 
-#favorite-btn.favorited i {
-  color: red;
-}
-
 #favorite-btn i:hover {
   color: red;
 }

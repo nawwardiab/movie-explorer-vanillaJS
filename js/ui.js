@@ -328,12 +328,16 @@ export function displayFavorites() {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
 
       if (isFavorite(movie.id)) {
+        const similarElements = document.querySelectorAll(
+          `span[class="remove-favorite"]`
+        );
+        similarElements.forEach((element) => {
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ].style.color = "";
+        });
         removeFavorite(movie.id); // Remove the movie from favorites
-        favoriteBtn.style.color = "none";
-        displayFavorites(); // Display the updated favorites
-      } else {
-        saveFavorite(movie); // Save the movie to favorites
-        favoriteBtn.style.color = "red";
+        favoriteBtn.style.color = "";
         displayFavorites(); // Display the updated favorites
       }
     });
