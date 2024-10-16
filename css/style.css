@@ -27,6 +27,10 @@ body.light-theme button {
   /* background-color: #007bff; */
   color: #ffffff;
 }
+body.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+}
 
 /* Navbar Styles */
 .navbar {
@@ -325,8 +329,8 @@ button:hover {
 
 #favorites-container {
   padding: 20px;
-  background-color: #f9f9f9;
-  border-top: 2px solid #ddd;
+  /* background-color: #f9f9f9; */
+  /* border-top: 2px solid #ddd; */
   margin-top: 20px;
 }
 
