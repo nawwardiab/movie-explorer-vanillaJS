@@ -41,6 +41,18 @@ function setupThemeToggle() {
   }
 }
 
+// Function to retry fetching favorites movies
+function retryFavoritesMovies() {
+  showLoadingSpinner("#loading-spinner"); // Show the loading spinner while fetching movies
+  displayFavorites(); // Display the favorite movies
+  setupCarouselButtons(
+    "#favorites-list",
+    "#favorites-prev-btn",
+    "#favorites-next-btn"
+  ); // Setup carousel buttons for the favorites list
+  hideLoadingSpinner("#loading-spinner"); // Hide the loading spinner once movies are fetched
+}
+
 // Function to retry fetching trending movies
 function retryTrendingMovies() {
   showLoadingSpinner("#trending-spinner"); // Show the loading spinner while fetching movies
@@ -306,15 +318,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const trendingMoviesContainer = document.querySelector("#trending-movies");
   const upcomingMoviesContainer = document.querySelector("#upcoming-movies");
   const topRatedMoviesContainer = document.querySelector("#top-rated-movies");
+  const favoritesContainer = document.querySelector("#favorites-list");
 
   if (trendingMoviesContainer) setupSwipeGesture(trendingMoviesContainer);
   if (upcomingMoviesContainer) setupSwipeGesture(upcomingMoviesContainer);
   if (topRatedMoviesContainer) setupSwipeGesture(topRatedMoviesContainer);
+  if (favoritesContainer) setupSwipeGesture(favoritesContainer);
 
   // Display trending movies when the page loads
   retryTrendingMovies(); // Retry fetching trending movies if an error occurs
   retryUpcomingMovies(); // Retry fetching upcoming movies if an error occurs
   retryTopRatedMovies(); // Retry fetching top-rated movies if an error occurs
+  retryFavoritesMovies(); // Initialize favorites carousel
   const scrollToTop = document.querySelector("#scrollTop"); // Button to scroll back to the top of the page
   // Scroll to the top functionality
   scrollToTop.addEventListener("click", () => {

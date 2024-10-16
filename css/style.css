@@ -189,8 +189,7 @@ h2 {
 
 /* Movie Cards Layout */
 
-#movies-container,
-#favorites-list {
+#movies-container {
   /* max-width: 85vw; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -199,6 +198,7 @@ h2 {
 }
 
 /* Movie card styling */
+/*
 .movie-card {
   background-color: #1e1e1e;
   border-radius: 10px;
@@ -212,6 +212,19 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+*/
+.movie-card {
+  flex: 0 0 auto; /* Prevent items from shrinking and define their width */
+  width: 200px; /* Adjust this to control the width of each card */
+  margin-right: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer;
 }
 
 .movie-card:hover {
@@ -281,8 +294,7 @@ button:hover {
 
 /* Responsive Grid for smaller screens */
 @media (max-width: 768px) {
-  #movies-container,
-  #favorites-list {
+  #movies-container {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
@@ -297,8 +309,7 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-  #movies-container,
-  #favorites-list {
+  #movies-container {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 
@@ -323,7 +334,54 @@ button:hover {
   text-align: center;
   font-size: 1.8rem;
   color: #333;
-  margin-bottom: 20px;
+  margin: 30px 0;
+}
+
+#favorites-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#favorites-list {
+  display: flex; /* Arrange items in a row */
+  transition: transform 0.5s ease-in-out;
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  padding: 20px 0;
+}
+
+#favorites-list::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+#favorites-prev-btn,
+#favorites-next-btn {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 10;
+}
+
+#favorites-prev-btn {
+  left: 10px;
+}
+
+#favorites-next-btn {
+  right: 10px;
+}
+
+#favorites-prev-btn:hover,
+#favorites-next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* #favorites-list {
@@ -442,7 +500,7 @@ button:hover {
   top: 10px;
   right: 15px;
   font-size: 1.5rem;
-  color: #333;
+  color: #bdbdbd;
   cursor: pointer;
   z-index: 1001;
 }

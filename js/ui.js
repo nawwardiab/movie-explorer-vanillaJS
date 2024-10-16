@@ -302,10 +302,9 @@ export function displayFavorites() {
 
   // Loop through each favorited movie
   favorites.forEach((movie) => {
-    const isFavorited = isFavorite(movie.id);
     // Create a new div element for each favorite
     const favoriteCard = document.createElement("li");
-    favoriteCard.classList.add("movie-card"); // Add a class for styling;
+    favoriteCard.classList.add("carousel-item"); // Add a class for styling;
     favoriteCard.innerHTML = `
       <img
         src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
