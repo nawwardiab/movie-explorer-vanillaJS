@@ -1,7 +1,8 @@
 // Description: This file contains the API request function to search for movies using the TMDB API.
 
 // TMDB API Key and base URL for searching movies
-const apiKey = "63e75ede8882bf28b0e5587dbac71611";
+import { apiKey } from "./config.js";
+
 const apiBaseUrl = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1`;
 
 const movieDetailsUrl = `https://api.themoviedb.org/3/movie/`;
@@ -49,6 +50,7 @@ export async function searchMovies(query) {
   }
 }
 
+// Function to fetch movie details with extras (trailers, credits, recommendations)
 export async function getMovieDetails(movieId) {
   const detailsUrl = `${movieDetailsUrl}${movieId}?api_key=${apiKey}&append_to_response=videos,credits,recommendations`;
   try {

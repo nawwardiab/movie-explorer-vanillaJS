@@ -697,6 +697,38 @@ button:hover {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+.loading-message {
+  text-align: center;
+  margin-top: 10px;
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.error-message {
+  background-color: #ffe6e6;
+  color: red;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.error-message button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.error-message button:hover {
+  background-color: #0056b3;
+}
+
 /* Footer Styles */
 .footer {
   background-color: #1e1e1e;
