@@ -42,7 +42,23 @@ export function displayMovies(movies) {
     // Prevent the Modal from opening when clicking on the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-      toggleFavorite(movie, favoriteBtn);
+      if (isFavorite(movie.id)) {
+        const similarElements = document.querySelectorAll(
+          `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+        );
+        similarElements.forEach((element) => {
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ].style.color = "";
+        });
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.style.color = "";
+        displayFavorites(); // Display the updated favorites
+      } else {
+        saveFavorite(movie);
+        favoriteBtn.style.color = "red";
+        displayFavorites(); // Update favorites list display
+      }
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -135,8 +151,27 @@ export function displayMovieDetails(movie) {
     favoriteBtn.style.color = "red";
   }
   // Add Event Listener to the favorite button on Modal
-  favoriteBtn.addEventListener("click", () => {
-    toggleFavorite(movie, favoriteBtn);
+
+  favoriteBtn.addEventListener("click", (event) => {
+    event.stopPropagation(); // Prevent click event from bubbling up to the movie card
+    console.log(movie);
+    if (isFavorite(movie.id)) {
+      const similarElements = document.querySelectorAll(
+        `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+      );
+      similarElements.forEach((element) => {
+        element.parentElement.children[
+          element.parentElement.children.length - 1
+        ].style.color = "";
+      });
+      removeFavorite(movie.id); // Remove the movie from favorites
+      favoriteBtn.style.color = "";
+      displayFavorites(); // Display the updated favorites
+    } else {
+      saveFavorite(movie);
+      favoriteBtn.style.color = "red";
+      displayFavorites(); // Update favorites list display
+    }
   });
 }
 
@@ -163,7 +198,23 @@ export function displayTrendingMovies(movies) {
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-      toggleFavorite(movie, favoriteBtn);
+      if (isFavorite(movie.id)) {
+        const similarElements = document.querySelectorAll(
+          `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+        );
+        similarElements.forEach((element) => {
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ].style.color = "";
+        });
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.style.color = "";
+        displayFavorites(); // Display the updated favorites
+      } else {
+        saveFavorite(movie);
+        favoriteBtn.style.color = "red";
+        displayFavorites(); // Update favorites list display
+      }
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -236,7 +287,23 @@ export function displayUpcomingMovies(movies) {
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-      toggleFavorite(movie, favoriteBtn);
+      if (isFavorite(movie.id)) {
+        const similarElements = document.querySelectorAll(
+          `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+        );
+        similarElements.forEach((element) => {
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ].style.color = "";
+        });
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.style.color = "";
+        displayFavorites(); // Display the updated favorites
+      } else {
+        saveFavorite(movie);
+        favoriteBtn.style.color = "red";
+        displayFavorites(); // Update favorites list display
+      }
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -277,7 +344,23 @@ export function displayTopRatedMovies(movies) {
     // add event listener to the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-      toggleFavorite(movie, favoriteBtn);
+      if (isFavorite(movie.id)) {
+        const similarElements = document.querySelectorAll(
+          `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+        );
+        similarElements.forEach((element) => {
+          element.parentElement.children[
+            element.parentElement.children.length - 1
+          ].style.color = "";
+        });
+        removeFavorite(movie.id); // Remove the movie from favorites
+        favoriteBtn.style.color = "";
+        displayFavorites(); // Display the updated favorites
+      } else {
+        saveFavorite(movie);
+        favoriteBtn.style.color = "red";
+        displayFavorites(); // Update favorites list display
+      }
     });
 
     // Add Event Listener for click to open the movie details Modal
@@ -326,10 +409,10 @@ export function displayFavorites() {
     // Prevent the Modal from opening when clicking on the favorite button
     favoriteBtn.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent click event from bubbling up to the movie card
-
+      console.log(movie);
       if (isFavorite(movie.id)) {
         const similarElements = document.querySelectorAll(
-          `span[class="remove-favorite"]`
+          `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
         );
         similarElements.forEach((element) => {
           element.parentElement.children[
@@ -406,17 +489,4 @@ export function hideLoadingSpinner(spinnerSelector) {
       spinner.removeChild(loadingMessage);
     }
   }
-}
-
-function toggleFavorite(movie, favoriteBtn) {
-  if (isFavorite(movie.id)) {
-    removeFavorite(movie.id);
-    favoriteBtn.classList.remove("favorited");
-    favoriteBtn.style.color = ""; // Remove color style
-  } else {
-    saveFavorite(movie);
-    favoriteBtn.classList.add("favorited");
-    favoriteBtn.style.color = "red"; // Set color to red
-  }
-  displayFavorites(); // Update favorites list display
 }

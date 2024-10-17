@@ -195,20 +195,20 @@ const handleSearch = () => {
   }
 };
 
-// Function to check if a movie is favorited
-function toggleFavoriteStatus(movieId, favoriteBtn) {
-  if (isFavorite(movieId)) {
-    removeFavorite(movieId);
-  } else {
-    saveFavorite({ id: movieId }); // Add the full movie object if needed
-  }
+// // Function to check if a movie is favorited
+// function toggleFavoriteStatus(movieId, favoriteBtn) {
+//   if (isFavorite(movieId)) {
+//     removeFavorite(movieId);
+//   } else {
+//     saveFavorite({ id: movieId }); // Add the full movie object if needed
+//   }
 
-  // Update the appearance of favorite buttons across the app
-  updateFavoriteButtons(movieId);
+//   // Update the appearance of favorite buttons across the app
+//   updateFavoriteButtons(movieId);
 
-  // Update favorite list in the favorites section
-  displayFavorites();
-}
+//   // Update favorite list in the favorites section
+//   displayFavorites();
+// }
 
 //Add a function to handle swipe gestures for the carousels
 function setupSwipeGesture(container) {
@@ -247,13 +247,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add event listener to the navigation toggle
   const navToggle = document.querySelector("#nav-toggle");
   const navMenu = document.querySelector("#nav-menu");
+  const navLinks = document.querySelectorAll("#nav-menu li"); // Navigation links
 
+  // Add event listener to toggle the navigation bar when burger menu is clicked
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("open");
+      navMenu.classList.toggle("open"); // Toggles visibility of the navigation list
+      navToggle.classList.toggle("open"); // Changes the burger icon appearance
+      document.body.classList.toggle("no-scroll"); // Prevent scrolling on body when nav menu is open
     });
   }
 
+  // Add event listener to close the navigation bar when a link is clicked
+  if (navLinks) {
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("open"); // Close the navigation list
+        navToggle.classList.remove("open"); // Reset the burger icon appearance
+        document.body.classList.remove("no-scroll"); // Re-enable scrolling on the body
+      });
+    });
+  }
   displayFavorites(); // Display favorite movies when the page loads
 
   // Add event listener to the movies container using event delegation

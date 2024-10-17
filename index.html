@@ -27,33 +27,37 @@
     </style>
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="container">
-        <h1>My Movie Explorer</h1>
-        <div class="search-container">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search My Movie Explorer..."
-          />
-          <button id="search-button">Search</button>
+    <header>
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="container">
+          <h1>My Movie Explorer</h1>
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search My Movie Explorer..."
+            />
+            <button id="search-button">Search</button>
+          </div>
+          <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="fa-solid fa-moon"></i>
+          </button>
+          <div id="nav-toggle" class="nav-toggle">
+            <i class="fa fa-bars"></i>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul id="nav-menu" class="nav-links">
+            <li><a href="#favorites-container">Favorites</a></li>
+            <li><a href="#trending-container">Trending</a></li>
+            <li><a href="#upcoming-container">Upcoming</a></li>
+            <li><a href="#top-rated-container">Top Rated</a></li>
+          </ul>
         </div>
-        <button id="theme-toggle" class="theme-toggle">
-          <i id="theme-icon" class="fa-solid fa-moon"></i>
-        </button>
-        <div id="nav-toggle" class="nav-toggle">
-          <i class="fa fa-bars"></i>
-        </div>
-        <ul id="nav-menu" class="nav-links">
-          <li><a href="#favorites-container">Favorites</a></li>
-          <li><a href="#trending-container">Trending</a></li>
-          <li><a href="#upcoming-container">Upcoming</a></li>
-          <li><a href="#top-rated-container">Top Rated</a></li>
-        </ul>
-      </div>
-    </nav>
-
+      </nav>
+    </header>
     <!-- Container to display movie results -->
     <ul id="movies-container"></ul>
 
