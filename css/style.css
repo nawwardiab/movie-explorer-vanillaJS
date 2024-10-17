@@ -207,6 +207,8 @@ h2 {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  /* margin-left: 50px; */
+  justify-items: center;
 }
 
 /* Movie card styling */
