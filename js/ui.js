@@ -156,25 +156,38 @@ export function displayMovieDetails(movie) {
     event.stopPropagation(); // Prevent click event from bubbling up to the movie card
     console.log(movie);
     if (isFavorite(movie.id)) {
+      removeFavorite(movie.id); // Remove the movie from favorites
+      displayFavorites(); // Display the updated favorites
       const similarElements = document.querySelectorAll(
         `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
       );
       similarElements.forEach((element) => {
-        element.parentElement.children[
-          element.parentElement.children.length - 1
-        ].style.color = "";
+        const favoriteBtn =
+          element.parentElement.querySelector("#favorite-btn");
+        if (favoriteBtn) {
+          favoriteBtn.style.color = "";
+        }
       });
-      removeFavorite(movie.id); // Remove the movie from favorites
-      favoriteBtn.style.color = "";
-      displayFavorites(); // Display the updated favorites
     } else {
+      // Favorite the movie
       saveFavorite(movie);
-      favoriteBtn.style.color = "red";
       displayFavorites(); // Update favorites list display
+
+      // Update all instances of this movie across the page
+      const similarElements = document.querySelectorAll(
+        `img[src="https://image.tmdb.org/t/p/w500${movie.poster_path}"]`
+      );
+      console.log(similarElements);
+      similarElements.forEach((element) => {
+        const favoriteBtn =
+          element.parentElement.querySelector("#favorite-btn");
+        if (favoriteBtn) {
+          favoriteBtn.style.color = "red";
+        }
+      });
     }
   });
 }
-
 // Function to display trending movies
 export function displayTrendingMovies(movies) {
   const trendingContainer = document.querySelector("#trending-movies"); // select the container to display trending movies
