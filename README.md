@@ -23,6 +23,13 @@ git clone https://github.com/nawwardiab/movie-explorer-vanillaJS.git
 
 # Navigate into the project directory
 cd movie-explorer-vanillaJS
+cd backend
+
+# Install dependencies
+npm install
+
+# run server
+node server.js
 
 # Open index.html in your browser
 ```
@@ -34,8 +41,6 @@ cd movie-explorer-vanillaJS
 4. **View Details**: Click on any movie card to open a modal with movie details, including a trailer link and cast information.
 5. **Toggle Theme**: Use the "Toggle Theme" button to switch between dark and light mode.
 
-## Live Demo
-A live demo of the Movie Explorer app can be found [here](https://nawwardiab.github.io/movie-explorer-vanillaJS/).
 
 ## Future Enhancements
 - **User Accounts**: Enable login to store favorite movies across different devices.
