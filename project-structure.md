@@ -20,8 +20,12 @@ movie-explorer/
 | ├── api.js <!-- # API-related logic (fetching movies from TMDB) -->
 | ├── ui.js <!-- # UI-related logic (rendering movie cards, managing DOM) -->
 | ├── storage.js <!-- # Local storage handling (for favorites) -->
-| ├── config.js <!-- # my API key for fetching from TMDB -->
 |
+├── server/ ✅ (New backend folder)
+│ ├── server.js ✅ (Backend logic)
+│ ├── .env ✅ (Store API key here)
+│ ├── package.json ✅ (Node.js dependencies)
+│
 ├── project-structure.md
 ├── README.md <!-- # for project description -->
 
