@@ -13,18 +13,17 @@
 ## Project Structure
 
 movie-explorer/
+├── index.html <!-- # Main html file -->
+├── style.css <!-- # Main Css file for styling -->
+├── js/ <!-- # JavaScript folder -->
+| ├── app.js <!-- # Main app logic and initialization -->
+| ├── api.js <!-- # API-related logic (fetching movies from TMDB) -->
+| ├── ui.js <!-- # UI-related logic (rendering movie cards, managing DOM) -->
+| ├── storage.js <!-- # Local storage handling (for favorites) -->
+| ├── config.js <!-- # my API key for fetching from TMDB -->
 |
-|–– index.html <!-- # Main html file -->
-|–– style.css <!-- # Main Css file for styling -->
-|–– js/ <!-- # JavaScript folder -->
-| |–– app.js <!-- # Main app logic and initialization -->
-| |–– api.js <!-- # API-related logic (fetching movies from TMDB) -->
-| |–– ui.js <!-- # UI-related logic (rendering movie cards, managing DOM) -->
-| |–– storage.js <!-- # Local storage handling (for favorites) -->
-| |–– config.js <!-- # my API key for fetching from TMDB -->
-|
-|–– project-structure.md
-|–– README.md <!-- # for project description -->
+├── project-structure.md
+├── README.md <!-- # for project description -->
 
 ---
 
